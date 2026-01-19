@@ -296,6 +296,60 @@
       text-decoration:none;
     }
     .site-footer a:hover{ text-decoration:underline; }
+
+
+    /* ===== HERO BANNER (pins floating like GolfTees) ===== */
+.lp-hero{
+  position: relative;
+  height: 420px;                 /* important: creates the “canvas” */
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(255,255,255,.92) 0%, rgba(255,255,255,0) 58%),
+    #0a7a2f;
+}
+
+/* hex overlay */
+.lp-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='190' viewBox='0 0 220 190'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.25' stroke-width='2'%3E%3Cpath d='M55 8l45 26v52l-45 26-45-26V34z'/%3E%3Cpath d='M165 8l45 26v52l-45 26-45-26V34z'/%3E%3Cpath d='M110 86l45 26v52l-45 26-45-26v-52z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 220px 190px;
+  pointer-events:none;
+}
+
+/* floating circles */
+.lp-pin{
+  position:absolute;             /* critical: stops stacking */
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.95);
+  padding: 10px;
+  box-shadow: 0 16px 34px rgba(0,0,0,.20);
+}
+
+.lp-pin img{
+  width:100%;
+  height:100%;
+  border-radius:999px;
+  object-fit: contain;           /* keeps full pin visible */
+}
+
+/* positions (tuned like GolfTees) */
+.lp-p1{ top: 42px;  right: 70px;  width: 120px; height: 120px; }
+.lp-p2{ top: 138px; right: 200px; width: 96px;  height: 96px;  }
+.lp-p3{ bottom: 62px; right: 80px; width: 128px; height: 128px; }
+.lp-p4{ bottom: 150px; right: 235px; width: 92px; height: 92px; }
+.lp-p5{ top: 245px; right: 140px; width: 84px; height: 84px; }
+
+/* mobile: keep it neat */
+@media (max-width: 980px){
+  .lp-hero{ height: 320px; margin-top: 16px; }
+}
+
   </style>
 </head>
 
@@ -334,28 +388,13 @@
         </div>
       </div>
 
-<!-- Golf-style banner with hex pattern + pins -->
-<div class="hero-banner" aria-label="Design inspiration banner">
-  <div class="badge">
-    <span class="badge-dot"></span>
-    Custom Lapel Pins • 2026
-  </div>
-
-  <div class="circle c1">
-    <img src="./assets/pins/pin-1.png" alt="Lapel pin example 1">
-  </div>
-  <div class="circle c2">
-    <img src="./assets/pins/pin-2.png" alt="Lapel pin example 2">
-  </div>
-  <div class="circle c3">
-    <img src="./assets/pins/pin-3.png" alt="Lapel pin example 3">
-  </div>
-  <div class="circle c4">
-    <img src="./assets/pins/pin-4.png" alt="Lapel pin example 4">
-  </div>
-  <div class="circle c5">
-    <img src="./assets/pins/pin-5.png" alt="Lapel pin example 5">
-  </div>
+<!-- Golf-style hero banner (RIGHT SIDE ONLY) -->
+<div class="lp-hero">
+  <div class="lp-pin lp-p1"><img src="./assets/pins/pin-1.png" alt="Lapel Pin 1"></div>
+  <div class="lp-pin lp-p2"><img src="./assets/pins/pin-2.png" alt="Lapel Pin 2"></div>
+  <div class="lp-pin lp-p3"><img src="./assets/pins/pin-3.png" alt="Lapel Pin 3"></div>
+  <div class="lp-pin lp-p4"><img src="./assets/pins/pin-4.png" alt="Lapel Pin 4"></div>
+  <div class="lp-pin lp-p5"><img src="./assets/pins/pin-5.png" alt="Lapel Pin 5"></div>
 </div>
 
     </section>
@@ -1001,6 +1040,7 @@
   </script>
 </body>
 </html>
+
 
 
 
