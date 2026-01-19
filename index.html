@@ -185,40 +185,71 @@
     }
 
     /* ================= Reference Tiles ================= */
-.ref-img-grid{
-  display:grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap:14px;
-  margin-top:12px;
-}
-@media (max-width: 1100px){
-  .ref-img-grid{ grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 650px){
-  .ref-img-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-
-.ref-img{
+/* Featured pin */
+.pin-featured{
   display:block;
+  width:100%;
   border-radius:18px;
   overflow:hidden;
+  border:1px solid rgba(24,39,87,.15);
   background:#fff;
-  border:1px solid rgba(15,23,42,.10);
-  box-shadow: 0 10px 22px rgba(15,23,42,.06);
-  transition: transform .12s ease, box-shadow .12s ease;
+  margin-top: 10px;
 }
-.ref-img:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(15,23,42,.10);
-}
-.ref-img img{
+
+.pin-featured img{
   width:100%;
-  height:160px;     /* uniform tiles */
-  object-fit:contain;
-  background:#fff;
+  height: 340px;         /* featured height */
+  object-fit: contain;
   display:block;
-  padding:10px;
+  padding: 12px;
 }
+
+/* One-line thumbnail strip */
+.pin-strip{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+  padding-bottom: 6px;   /* space for scrollbar */
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Thumbnails */
+.pin-thumb{
+  flex: 0 0 auto;
+  width: 120px;
+  height: 82px;
+  border-radius:14px;
+  border:1px solid rgba(24,39,87,.15);
+  background:#fff;
+  padding: 8px;
+  cursor:pointer;
+}
+
+.pin-thumb img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
+
+.pin-thumb.is-active{
+  border:2px solid #182757;
+}
+
+/* nicer focus for keyboard */
+.pin-thumb:focus{
+  outline: 3px solid rgba(24,39,87,.25);
+  outline-offset: 2px;
+}
+
+/* mobile tweaks */
+@media (max-width: 640px){
+  .pin-featured img{ height: 260px; }
+  .pin-thumb{ width: 105px; height: 74px; }
+}
+
 
     /* ================= 3 Tiles (What happens next) ================= */
     .tiles3{
@@ -350,45 +381,61 @@
   </main>
 
   <!-- Reference Pins -->
-<section class="section">
+<section class="section" id="reference-pins">
   <div class="card">
     <h2 class="h2">Reference Pin Designs</h2>
-    <p class="p">Lapel Pins for different locations.</p>
+    <p class="p">Click a design to preview it larger.</p>
 
-    <div class="ref-img-grid">
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-01.png" alt="Reference pin 1">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-02.png" alt="Reference pin 2">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-03.png" alt="Reference pin 3">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-04.png" alt="Reference pin 4">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-05.png" alt="Reference pin 5">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-06.png" alt="Reference pin 6">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-07.png" alt="Reference pin 7">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-08.png" alt="Reference pin 8">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-09.png" alt="Reference pin 9">
-      </a>
-      <a class="ref-img" target="_blank" rel="noopener">
-        <img src="./assets/ref/ref-10.png" alt="Reference pin 10">
-      </a>
+    <!-- Featured -->
+    <a id="pinFeaturedLink" class="pin-featured" href="./assets/ref/ref-01.png" target="_blank" rel="noopener">
+      <img id="pinFeaturedImg" src="./assets/ref/ref-01.png" alt="Reference pin preview">
+    </a>
+
+    <!-- One-line thumbnails -->
+    <div class="pin-strip" id="pinStrip" aria-label="Reference pin thumbnails">
+      <button class="pin-thumb is-active" type="button" data-full="./assets/ref/ref-01.png" aria-label="Preview pin 1">
+        <img src="./assets/ref/ref-01.png" alt="Pin 1 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-02.png" aria-label="Preview pin 2">
+        <img src="./assets/ref/ref-02.png" alt="Pin 2 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-03.png" aria-label="Preview pin 3">
+        <img src="./assets/ref/ref-03.png" alt="Pin 3 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-04.png" aria-label="Preview pin 4">
+        <img src="./assets/ref/ref-04.png" alt="Pin 4 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-05.png" aria-label="Preview pin 5">
+        <img src="./assets/ref/ref-05.png" alt="Pin 5 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-06.png" aria-label="Preview pin 6">
+        <img src="./assets/ref/ref-06.png" alt="Pin 6 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-07.png" aria-label="Preview pin 7">
+        <img src="./assets/ref/ref-07.png" alt="Pin 7 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-08.png" aria-label="Preview pin 8">
+        <img src="./assets/ref/ref-08.png" alt="Pin 8 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-09.png" aria-label="Preview pin 9">
+        <img src="./assets/ref/ref-09.png" alt="Pin 9 thumbnail">
+      </button>
+
+      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-10.png" aria-label="Preview pin 10">
+        <img src="./assets/ref/ref-10.png" alt="Pin 10 thumbnail">
+      </button>
     </div>
   </div>
 </section>
+
 
   <!-- What happens next (3 tiles) -->
   <section class="section">
@@ -442,10 +489,38 @@
 </section>
 
 
+<script>
+  (function () {
+    const featuredImg = document.getElementById("pinFeaturedImg");
+    const featuredLink = document.getElementById("pinFeaturedLink");
+    const strip = document.getElementById("pinStrip");
+    if (!featuredImg || !featuredLink || !strip) return;
+
+    strip.addEventListener("click", (e) => {
+      const btn = e.target.closest(".pin-thumb");
+      if (!btn) return;
+
+      const full = btn.getAttribute("data-full");
+      if (!full) return;
+
+      // swap featured
+      featuredImg.src = full;
+      featuredLink.href = full;
+
+      // active state
+      strip.querySelectorAll(".pin-thumb").forEach(b => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+
+      // optional: keep selected thumb in view
+      btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    });
+  })();
+</script>
 
 
 </body>
 </html>
+
 
 
 
