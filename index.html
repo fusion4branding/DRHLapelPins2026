@@ -405,71 +405,70 @@
   </section>
 
   <!-- Request Form -->
-  <section class="section" id="request-form">
-    <div class="card">
-      <h2 class="h2">Request Lapel Pins</h2>
-      <p class="p">Complete the form and we’ll follow up shortly.</p>
-
-      <!-- NOTE: GitHub pages is static. Add your form endpoint in action="" (Formspree or backend). -->
 <form
   class="form"
   method="POST"
   action="https://formspree.io/f/xaqgjpjp"
   enctype="multipart/form-data"
 >
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required />
-        </div>
+  <!-- Formspree helpers -->
+  <input type="hidden" name="_subject" value="DRH Lapel Pins 2026 – New Request" />
+  <input type="text" name="_gotcha" style="display:none" />
+  <!-- Optional: redirect after submit -->
+  <!-- <input type="hidden" name="_redirect" value="https://fusion4branding.github.io/DRHLapelPins2026/thank-you.html" /> -->
 
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-        </div>
+  <div>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required />
+  </div>
 
-        <div>
-          <label for="division">Division</label>
-          <input id="division" name="division" type="text" required />
-        </div>
+  <div>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required />
+  </div>
 
-        <div>
-          <label for="qty">QTY (Minimum 100)</label>
-          <input id="qty" name="qty" type="number" min="100" value="100" required />
-          <p class="help">Start at 100 and enter any higher quantity needed.</p>
-        </div>
+  <div>
+    <label for="division">Division</label>
+    <input id="division" name="division" type="text" required />
+  </div>
 
-        <div class="full">
-          <label for="date_needed">Date needed by</label>
-          <input id="date_needed" name="date_needed" type="date" required />
-        </div>
+  <div>
+    <label for="qty">QTY (Minimum 100)</label>
+    <input id="qty" name="qty" type="number" min="100" value="100" required />
+    <p class="help">Start at 100 and enter any higher quantity needed.</p>
+  </div>
 
-        <div class="full">
-          <label for="theme">What images or themes do you want to incorporate into your design? (State Bird, Local Mythology, Movie Inspiration, etc.)</label>
-          <textarea id="theme" name="theme"></textarea>
-        </div>
+  <div class="full">
+    <label for="date_needed">Date needed by</label>
+    <input id="date_needed" name="date_needed" type="date" required />
+  </div>
 
-        <div>
-          <label for="did_2024">Did your Location do a lapel pin in 2024?</label>
-          <select id="did_2024" name="did_2024" required>
-            <option value="" selected disabled>Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
+  <div class="full">
+    <label for="theme">What images or themes do you want to incorporate into your design? (State Bird, Local Mythology, Movie Inspiration, etc.)</label>
+    <textarea id="theme" name="theme"></textarea>
+  </div>
 
-        <div id="uploadWrap" style="display:none;">
-          <label for="prev_pin">If yes, can you send a photo of the previous version? (Optional)</label>
-          <input id="prev_pin" name="prev_pin" type="file" accept="image/*" />
-          <p class="help">Optional upload. JPG/PNG recommended.</p>
-        </div>
+  <div>
+    <label for="did_2024">Did your Location do a lapel pin in 2024?</label>
+    <select id="did_2024" name="did_2024" required>
+      <option value="" selected disabled>Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
 
-        <div class="full submit">
-          <button type="submit">Submit Request</button>
+  <!-- FILE UPLOAD (works only if your Formspree plan supports uploads) -->
+<div id="uploadWrap" style="display:none;">
+  <label for="prev_pin_link">If yes, please share a link to a photo of the previous pin (Optional)</label>
+  <input id="prev_pin_link" name="prev_pin_link" type="url" placeholder="Google Drive / OneDrive link" />
+  <p class="help">Paste a share link (view access).</p>
+</div>
 
-        </div>
-      </form>
-    </div>
-  </section>
+  <div class="full submit">
+    <button type="submit">Submit Request</button>
+  </div>
+</form>
+
 
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
@@ -506,6 +505,7 @@
 
 </body>
 </html>
+
 
 
 
