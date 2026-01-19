@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DRH Lapel Pins 2026 | Fusion4Branding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DRH Lapel Pins 2026</title>
 
   <style>
     :root{
-      --navy:#172a5c;              /* close to the Closing Gifts bar */
+      --navy:#172a5c;
+      --green:#0a7a2f;
+      --green-dark:#086526;
+
+      --bg:#f5f7fb;
+      --card:#ffffff;
       --text:#0f172a;
-      --muted:rgba(15,23,42,.70);
+      --muted:rgba(15,23,42,.72);
       --border:rgba(15,23,42,.12);
-      --card:#fff;
-      --bg:#f5f7fb;                /* light background like the closing gifts page */
-      --shadow:0 10px 28px rgba(15,23,42,.08);
-      --radius:18px;
-      --max:1100px;
+
+      --shadow:0 16px 40px rgba(0,0,0,.10);
+      --shadow-soft:0 10px 28px rgba(15,23,42,.08);
+
+      --radius:22px;
+      --max:1200px;
     }
 
     *{ box-sizing:border-box; }
@@ -26,8 +32,13 @@
       background:var(--bg);
     }
     a{ color:inherit; }
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 0 16px;
+    }
 
-    /* ===== Header (match Closing Gifts) ===== */
+    /* ================= HEADER ================= */
     .site-header{
       background:var(--navy);
     }
@@ -40,772 +51,221 @@
       justify-content:space-between;
       gap:16px;
     }
-    .brand-left, .brand-right{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 120px;
-    }
-    .brand-left img{
+    .site-header__inner img{
       height:44px;
       width:auto;
       display:block;
     }
-    .brand-right img{
-      height:28px;
-      width:auto;
-      display:block;
-      opacity:.95;
-    }
-    /* if you don’t have a fusion logo file yet, show text nicely */
-    .brand-right .fallback{
+    .site-header__right{
       color:#fff;
-      font-weight:800;
-      letter-spacing:.2px;
-      text-decoration:none;
+      font-weight:900;
       font-size:14px;
       opacity:.95;
+      letter-spacing:.2px;
       white-space:nowrap;
     }
 
-    /* ===== Main Layout ===== */
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:34px 16px 52px;
-    }
+    /* ================= HERO ================= */
     .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:22px;
-      align-items:center;
-      padding:34px 10px 10px;
+      max-width:var(--max);
+      margin:24px auto 0;
+      padding:0 16px;
     }
-    @media (max-width: 980px){
-      .hero{ grid-template-columns:1fr; padding-top:24px; }
-    }
-
-    .headline{
-      font-size:40px;
-      line-height:1.12;
-      margin:0 0 14px;
-      font-weight:800;
-      color:var(--navy);
-      letter-spacing:-.3px;
-    }
-    .sub{
-      margin:0 0 18px;
-      font-size:16px;
-      line-height:1.6;
-      color:var(--muted);
-      max-width:62ch;
+    .hero-banner{
+      position:relative;
+      width:100%;
+      min-height:420px;
+      border-radius:24px;
+      overflow:hidden;
+      background-image:url("./assets/Banner.png");
+      background-size:cover;
+      background-position:center right;
+      box-shadow: var(--shadow);
     }
 
-    .cta-row{
+    /* CTA buttons overlay */
+    .hero-actions{
+      position:absolute;
+      left:72px;
+      bottom:64px;
       display:flex;
-      gap:12px;
+      gap:14px;
       flex-wrap:wrap;
-      margin-top:14px;
     }
-    .btn{
+
+    .hero-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      border:1px solid rgba(23,42,92,.18);
-      background:#fff;
-      font-weight:800;
-      text-decoration:none;
-      color:var(--navy);
-      box-shadow: 0 6px 18px rgba(15,23,42,.06);
-    }
-    .btn.primary{
-      background:var(--navy);
-      color:#fff;
-      border-color:transparent;
-    }
-
-    /* Video-style card area (like the right-side video in Closing Gifts) */
-    .media-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      padding:14px;
-    }
-    .media-frame{
-      border-radius:18px;
-      overflow:hidden;
-      background: linear-gradient(180deg, rgba(15,23,42,.06), rgba(15,23,42,.02));
-      border:1px solid rgba(15,23,42,.08);
-      aspect-ratio: 16 / 9;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      color:rgba(15,23,42,.55);
-      font-weight:700;
-    }
-    .media-note{
-      margin:10px 0 0;
-      font-size:12.5px;
-      color:rgba(15,23,42,.6);
-    }
-
-    /* ===== Section cards ===== */
-    .section{
-      margin-top:22px;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      padding:20px;
-    }
-    .h2{
-      margin:0 0 10px;
-      font-size:18px;
+      padding:14px 28px;
+      font-size:15px;
       font-weight:900;
+      border-radius:999px;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+      box-shadow:0 14px 32px rgba(0,0,0,.25);
+    }
+
+    .hero-btn.primary{
+      background:var(--green);
+      color:#fff;
+    }
+    .hero-btn.primary:hover{
+      background:var(--green-dark);
+      transform:translateY(-2px);
+    }
+
+    .hero-btn.secondary{
+      background:#fff;
+      color:var(--green);
+    }
+    .hero-btn.secondary:hover{
+      transform:translateY(-2px);
+    }
+
+    @media (max-width:1024px){
+      .hero-banner{ min-height:360px; }
+      .hero-actions{ left:40px; bottom:48px; }
+    }
+    @media (max-width:640px){
+      .hero-banner{
+        min-height:300px;
+        background-position:center;
+      }
+      .hero-actions{
+        left:50%;
+        bottom:22px;
+        transform:translateX(-50%);
+        width:calc(100% - 40px);
+        max-width:360px;
+        justify-content:center;
+      }
+      .hero-btn{
+        width:100%;
+        text-align:center;
+      }
+    }
+
+    /* ================= SECTIONS ================= */
+    .section{
+      margin:22px auto 0;
+      max-width:var(--max);
+      padding:0 16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding:18px;
+    }
+
+    .h2{
+      margin:0 0 8px;
+      font-size:18px;
+      font-weight:1000;
       color:var(--navy);
     }
     .p{
       margin:0 0 12px;
-      color:var(--muted);
-      line-height:1.6;
       font-size:14px;
+      line-height:1.65;
+      color:var(--muted);
     }
 
-    /* ===== Reference tiles ===== */
-    .gallery{
+    /* ================= Reference Tiles ================= */
+    .ref-grid{
       display:grid;
-      grid-template-columns:repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap:14px;
       margin-top:12px;
     }
-    @media (max-width: 980px){
-      .gallery{ grid-template-columns:repeat(2,1fr); }
+    @media (max-width:980px){
+      .ref-grid{ grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 560px){
-      .gallery{ grid-template-columns:1fr; }
+    @media (max-width:560px){
+      .ref-grid{ grid-template-columns: 1fr; }
     }
-    .tile{
+
+    .ref-tile{
+      display:block;
+      text-decoration:none;
       border:1px solid rgba(15,23,42,.10);
       border-radius:18px;
       padding:14px;
-      text-decoration:none;
       background:#fff;
       box-shadow: 0 10px 22px rgba(15,23,42,.05);
-      display:block;
+      transition: transform .12s ease, box-shadow .12s ease;
     }
-    .tile strong{
+    .ref-tile:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15,23,42,.08);
+    }
+    .ref-tile strong{
       display:block;
       font-size:14px;
       color:var(--navy);
       margin-bottom:6px;
     }
-    .tile span{
+    .ref-tile span{
       display:block;
       font-size:12px;
       color:rgba(15,23,42,.55);
     }
 
-    /* ===== “3 tiles” row like Closing Gifts ===== */
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
+    .tip{
       margin-top:10px;
+      font-size:12px;
+      color:rgba(15,23,42,.55);
     }
-    @media (max-width: 980px){
-      .steps{ grid-template-columns:1fr; }
+
+    /* ================= 3 Tiles (What happens next) ================= */
+    .tiles3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      margin-top:12px;
     }
-    .step{
+    @media (max-width:980px){
+      .tiles3{ grid-template-columns: 1fr; }
+    }
+
+    .tile{
       border:1px solid rgba(15,23,42,.10);
       border-radius:18px;
       padding:18px;
       background:#fff;
     }
-    .step strong{
-      display:block;
-      margin-bottom:6px;
+    .tile-title{
+      margin:0 0 8px;
+      font-weight:1000;
       color:var(--navy);
-      font-weight:900;
     }
-    .step p{
+    .tile-text{
       margin:0;
       color:rgba(15,23,42,.68);
-      line-height:1.6;
+      line-height:1.65;
       font-size:13px;
     }
 
-    /* ===== Form ===== */
+    /* ================= FORM ================= */
     .form{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:14px;
-    }
-    @media (max-width: 980px){
-      .form{ grid-template-columns:1fr; }
-    }
-    label{
-      font-size:12px;
-      font-weight:900;
-      color:rgba(15,23,42,.62);
-      display:block;
-      margin-bottom:6px;
-    }
-    input, select, textarea{
-      width:100%;
-      padding:11px 12px;
-      border-radius:14px;
-      border:1px solid rgba(15,23,42,.14);
-      background:#fff;
-      font-size:14px;
-      outline:none;
-    }
-    textarea{ min-height:96px; resize:vertical; }
-    .full{ grid-column:1 / -1; }
-    .help{
-      margin:8px 0 0;
-      font-size:12px;
-      color:rgba(15,23,42,.55);
-      line-height:1.5;
-    }
-    .submit button{
-      width:100%;
-      border:none;
-      border-radius:16px;
-      padding:13px 14px;
-      background:var(--navy);
-      color:#fff;
-      font-weight:900;
-      cursor:pointer;
-      font-size:14px;
-    }
-
-    /* ===== Footer (match Closing Gifts) ===== */
-    .site-footer{
-      padding:18px 16px 26px;
-      text-align:center;
-      color:rgba(15,23,42,.55);
-      font-size:12px;
-    }
-    .site-footer a{
-      color:rgba(15,23,42,.55);
-      text-decoration:none;
-    }
-    .site-footer a:hover{ text-decoration:underline; }
-
-
-    /* ===== HERO BANNER (pins floating like GolfTees) ===== */
-.lp-hero{
-  position: relative;
-  height: 420px;                 /* important: creates the “canvas” */
-  border-radius: 24px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 18% 50%, rgba(255,255,255,.92) 0%, rgba(255,255,255,0) 58%),
-    #0a7a2f;
-}
-
-/* hex overlay */
-.lp-hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='190' viewBox='0 0 220 190'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.25' stroke-width='2'%3E%3Cpath d='M55 8l45 26v52l-45 26-45-26V34z'/%3E%3Cpath d='M165 8l45 26v52l-45 26-45-26V34z'/%3E%3Cpath d='M110 86l45 26v52l-45 26-45-26v-52z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 220px 190px;
-  pointer-events:none;
-}
-
-/* floating circles */
-.lp-pin{
-  position:absolute;             /* critical: stops stacking */
-  width: 110px;
-  height: 110px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.95);
-  padding: 10px;
-  box-shadow: 0 16px 34px rgba(0,0,0,.20);
-}
-
-.lp-pin img{
-  width:100%;
-  height:100%;
-  border-radius:999px;
-  object-fit: contain;           /* keeps full pin visible */
-}
-
-/* positions (tuned like GolfTees) */
-.lp-p1{ top: 42px;  right: 70px;  width: 120px; height: 120px; }
-.lp-p2{ top: 138px; right: 200px; width: 96px;  height: 96px;  }
-.lp-p3{ bottom: 62px; right: 80px; width: 128px; height: 128px; }
-.lp-p4{ bottom: 150px; right: 235px; width: 92px; height: 92px; }
-.lp-p5{ top: 245px; right: 140px; width: 84px; height: 84px; }
-
-/* mobile: keep it neat */
-@media (max-width: 980px){
-  .lp-hero{ height: 320px; margin-top: 16px; }
-}
-
-  </style>
-</head>
-
-<body>
-  <!-- HEADER -->
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <div class="brand-left">
-        <img src="./assets/drh-logo.png" alt="D.R. Horton" />
-      </div>
-
-      <!-- Right side: replace button with Fusion4Branding -->
-      <div class="brand-right">
-        <!-- Prefer logo file -->
-        <img src="./assets/fusion4branding.png" alt="Fusion4Branding"
-             onerror="this.style.display='none'; document.getElementById('f4bText').style.display='inline-flex';" />
-        <!-- Fallback text if logo missing -->
-        <a id="f4bText" class="fallback" href="#" style="display:none;">Fusion4Branding</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" aria-label="DRH Lapel Pins 2026">
-      <div>
-        <h1 class="headline">Looking for Lapel Pins for the 2026 Conference? Fusion 4 Branding is here to help!</h1>
-        <p class="sub">
-          Share your division details, quantity, date needed, and design inspiration.
-          We’ll follow up with options, lead times, and next steps.
-        </p>
-
-        <div class="cta-row">
-          <a class="btn primary" href="#request-form">Request a Quote</a>
-          <a class="btn" href="./schedule.html">Schedule a Call</a>
-        </div>
-      </div>
-
-<!-- Golf-style hero banner (RIGHT SIDE ONLY) -->
-<div class="lp-hero">
-  <div class="lp-pin lp-p1"><img src="./assets/pins/pin-1.png" alt="Lapel Pin 1"></div>
-  <div class="lp-pin lp-p2"><img src="./assets/pins/pin-2.png" alt="Lapel Pin 2"></div>
-  <div class="lp-pin lp-p3"><img src="./assets/pins/pin-3.png" alt="Lapel Pin 3"></div>
-  <div class="lp-pin lp-p4"><img src="./assets/pins/pin-4.png" alt="Lapel Pin 4"></div>
-  <div class="lp-pin lp-p5"><img src="./assets/pins/pin-5.png" alt="Lapel Pin 5"></div>
-</div>
-
-    </section>
-
-    <!-- Reference Pins -->
-    <section class="section" aria-label="Reference pin designs">
-      <h2 class="h2">Reference Pin Designs (PDF)</h2>
-      <p class="p">Click any example below to view the reference artwork.</p>
-
-      <div class="gallery">
-        <a class="tile" href="./assets/drh-lapelpins/drh-nc-raleigh-pin-26.pdf" target="_blank" rel="noopener">
-          <strong>NC Raleigh Pin (’26)</strong><span>Open PDF</span>
-        </a>
-        <a class="tile" href="./assets/drh-lapelpins/drh-florida-pin.pdf" target="_blank" rel="noopener">
-          <strong>Florida Pin</strong><span>Open PDF</span>
-        </a>
-        <a class="tile" href="./assets/drh-lapelpins/drh-georgia-atl-pin.pdf" target="_blank" rel="noopener">
-          <strong>Georgia / ATL Pin</strong><span>Open PDF</span>
-        </a>
-        <a class="tile" href="./assets/drh-lapelpins/drh-orlando-florida-pin.pdf" target="_blank" rel="noopener">
-          <strong>Orlando, FL Pin</strong><span>Open PDF</span>
-        </a>
-      </div>
-
-      <p class="help">
-        Tip: For a more visual “tile” look (like your golf site), export each PDF to a PNG thumbnail and swap these links into image tiles.
-      </p>
-    </section>
-
-    <!-- Steps (3 tiles) -->
-    <section class="section" aria-label="Process">
-      <h2 class="h2">What happens next</h2>
-      <div class="steps">
-        <div class="step">
-          <strong>Request a quote</strong>
-          <p>Submit your division, quantity, and date needed along with design inspiration.</p>
-        </div>
-        <div class="step">
-          <strong>Review options</strong>
-          <p>We’ll confirm feasibility, decoration details, and lead times for your event.</p>
-        </div>
-        <div class="step">
-          <strong>Talk to Hank</strong>
-          <p>Schedule a quick call to align on pricing, timeline, and production approach.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Form -->
-    <section id="request-form" class="section" aria-label="Request form">
-      <h2 class="h2">Request Lapel Pins</h2>
-      <p class="p">Complete the form and we’ll follow up shortly.</p>
-
-      <!-- GitHub note: connect this to Formspree or a backend to email Hank -->
-      <form class="form" method="post" action="" enctype="multipart/form-data">
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required />
-        </div>
-
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-        </div>
-
-        <div>
-          <label for="division">Division</label>
-          <input id="division" name="division" type="text" required />
-        </div>
-
-        <div>
-          <label for="qty">QTY (Minimum 100)</label>
-          <input id="qty" name="qty" type="number" min="100" value="100" required />
-          <p class="help">Start at 100 and enter any higher quantity needed.</p>
-        </div>
-
-        <div class="full">
-          <label for="date_needed">Date needed by</label>
-          <input id="date_needed" name="date_needed" type="date" required />
-        </div>
-
-        <div class="full">
-          <label for="theme">What images or themes do you want to incorporate into your design? (State Bird, Local Mythology, Movie Inspiration, etc.)</label>
-          <textarea id="theme" name="theme"></textarea>
-        </div>
-
-        <div>
-          <label for="did_2024">Did your Location do a lapel pin in 2024?</label>
-          <select id="did_2024" name="did_2024" required>
-            <option value="" selected disabled>Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-
-        <div id="uploadWrap" style="display:none;">
-          <label for="prev_pin">If yes, can you send a photo of the previous version? (Optional)</label>
-          <input id="prev_pin" name="prev_pin" type="file" accept="image/*" />
-          <p class="help">Optional upload. JPG/PNG recommended.</p>
-        </div>
-
-        <div class="full submit">
-          <button type="submit">Submit Request</button>
-          <p class="help">Form submissions should route to Hank’s inbox once you connect the form action endpoint.</p>
-        </div>
-      </form>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer" role="contentinfo">
-    <div>
-      © <span id="year"></span> <a href="#">Fusion4Branding</a> • <a href="./index.html">Lapel Pins</a>
-    </div>
-  </footer>
-
-  <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Show upload only when "Yes"
-    (function(){
-      var did = document.getElementById('did_2024');
-      var wrap = document.getElementById('uploadWrap');
-      var file = document.getElementById('prev_pin');
-
-      function sync(){
-        var v = did ? did.value : '';
-        if (v === 'Yes') <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DRH Lapel Pins 2026 | Fusion4Branding</title>
-
-  <style>
-    :root{
-      --navy:#172a5c;                  /* Closing Gifts header tone */
-      --bg:#f5f7fb;                    /* light page background */
-      --text:#0f172a;
-      --muted:rgba(15,23,42,.72);
-      --border:rgba(15,23,42,.12);
-      --shadow:0 10px 28px rgba(15,23,42,.08);
-      --radius:22px;
-      --max:1100px;
-
-      /* Golf-like green hero accent */
-      --green:#0a7a2f;
-      --green-2:#0d8b35;
-    }
-
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:var(--bg);
-    }
-    a{ color:inherit; }
-
-    /* ===== Header (match Closing Gifts) ===== */
-    .site-header{ background:var(--navy); }
-    .site-header__inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    .brand-left img{ height:44px; width:auto; display:block; }
-    .brand-right{
-      display:flex; align-items:center; justify-content:flex-end;
-      gap:12px;
-    }
-    .brand-right img{ height:28px; width:auto; display:block; opacity:.95; }
-    .fallback{
-      color:#fff;
-      font-weight:800;
-      letter-spacing:.2px;
-      text-decoration:none;
-      font-size:14px;
-      opacity:.95;
-      white-space:nowrap;
-    }
-
-    /* ===== Layout ===== */
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:34px 16px 52px;
-    }
-
-    /* ===== HERO (Golf-style) ===== */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:26px;
-      align-items:center;
-      padding:18px 0 10px;
-    }
-    @media (max-width: 980px){
-      .hero{ grid-template-columns:1fr; }
-    }
-
-    .headline{
-      font-size:38px;
-      line-height:1.12;
-      margin:0 0 12px;
-      font-weight:900;
-      color:var(--navy);
-      letter-spacing:-.3px;
-    }
-    .sub{
-      margin:0 0 18px;
-      font-size:15.5px;
-      line-height:1.65;
-      color:var(--muted);
-      max-width:72ch;
-    }
-
-    .cta-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      border:1px solid rgba(23,42,92,.18);
-      background:#fff;
-      font-weight:900;
-      text-decoration:none;
-      color:var(--navy);
-      box-shadow: 0 6px 18px rgba(15,23,42,.06);
-    }
-    .btn.primary{
-      background:var(--navy);
-      color:#fff;
-      border-color:transparent;
-    }
-
-    /* Right hero banner: green + hex pattern + circles */
-    .hero-banner{
-      position:relative;
-      border-radius:28px;
-      border:1px solid rgba(15,23,42,.10);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      min-height: 360px;
-      background:
-        radial-gradient(1200px 600px at 30% 60%, rgba(255,255,255,.65) 0%, rgba(255,255,255,.0) 55%),
-        linear-gradient(180deg, rgba(10,122,47,.18), rgba(10,122,47,.06));
-    }
-
-    /* Hex pattern overlay using inline SVG pattern */
-    .hero-banner::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      opacity:.55;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='210' viewBox='0 0 240 210'%3E%3Cg fill='none' stroke='%230a7a2f' stroke-opacity='.22' stroke-width='2'%3E%3Cpath d='M60 10l40 23v46l-40 23-40-23V33z'/%3E%3Cpath d='M160 10l40 23v46l-40 23-40-23V33z'/%3E%3Cpath d='M110 87l40 23v46l-40 23-40-23v-46z'/%3E%3Cpath d='M10 87l40 23v46l-40 23-40-23v-46z'/%3E%3Cpath d='M210 87l40 23v46l-40 23-40-23v-46z'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: 240px 210px;
-      background-repeat: repeat;
-      pointer-events:none;
-    }
-
-    /* Soft white “wipe” like the golf hero */
-    .hero-banner::after{
-      content:"";
-      position:absolute;
-      left:-10%;
-      top:-10%;
-      width:65%;
-      height:140%;
-      background: radial-gradient(circle at 80% 50%, rgba(255,255,255,.90), rgba(255,255,255,.0) 60%);
-      transform: rotate(-8deg);
-      pointer-events:none;
-      opacity:.85;
-    }
-
-    .badge{
-      position:absolute;
-      left:18px;
-      top:18px;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.85);
-      border:1px solid rgba(15,23,42,.10);
-      font-weight:900;
-      color: rgba(15,23,42,.75);
-      z-index:2;
-    }
-    .badge-dot{
-      width:10px; height:10px; border-radius:999px;
-      background: var(--green);
-      box-shadow: 0 0 0 4px rgba(10,122,47,.14);
-    }
-
-    /* Product circles */
-    .circle{
-      position:absolute;
-      width:108px;
-      height:108px;
-      border-radius:999px;
-      background: rgba(255,255,255,.92);
-      border: 8px solid rgba(255,255,255,.92);
-      box-shadow: 0 14px 30px rgba(15,23,42,.12);
-      overflow:hidden;
-      z-index:2;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .circle img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:999px;
-    }
-
-    /* Circle positions (adjust any time) */
-    .c1{ right:46px; top:56px; width:112px; height:112px; }
-    .c2{ right:160px; top:140px; width:96px; height:96px; }
-    .c3{ right:60px; bottom:72px; width:118px; height:118px; }
-    .c4{ right:190px; bottom:52px; width:92px; height:92px; }
-    .c5{ right:120px; top:238px; width:84px; height:84px; }
-
-    @media (max-width: 980px){
-      .hero-banner{ min-height: 320px; }
-    }
-
-    /* ===== Sections ===== */
-    .section{
-      margin-top:22px;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:20px;
-    }
-    .h2{
-      margin:0 0 10px;
-      font-size:18px;
-      font-weight:1000;
-      color:var(--navy);
-    }
-    .p{
-      margin:0 0 12px;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:14px;
-    }
-
-    /* ===== Reference Tiles ===== */
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap:14px;
       margin-top:12px;
     }
-    @media (max-width: 980px){
-      .gallery{ grid-template-columns:repeat(2, 1fr); }
-    }
-    @media (max-width: 560px){
-      .gallery{ grid-template-columns:1fr; }
-    }
-    .tile{
-      border:1px solid rgba(15,23,42,.10);
-      border-radius:18px;
-      padding:14px;
-      text-decoration:none;
-      background:#fff;
-      box-shadow: 0 10px 22px rgba(15,23,42,.05);
-      display:block;
-    }
-    .tile strong{
-      display:block;
-      font-size:14px;
-      color:var(--navy);
-      margin-bottom:6px;
-    }
-    .tile span{
-      display:block;
-      font-size:12px;
-      color:rgba(15,23,42,.55);
-    }
-
-    /* ===== Form ===== */
-    .form{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:14px;
-    }
-    @media (max-width: 980px){
-      .form{ grid-template-columns:1fr; }
+    @media (max-width:980px){
+      .form{ grid-template-columns: 1fr; }
     }
     label{
+      display:block;
       font-size:12px;
       font-weight:900;
       color:rgba(15,23,42,.62);
-      display:block;
       margin-bottom:6px;
     }
     input, select, textarea{
@@ -818,13 +278,14 @@
       outline:none;
     }
     textarea{ min-height:96px; resize:vertical; }
-    .full{ grid-column:1 / -1; }
+    .full{ grid-column: 1 / -1; }
     .help{
       margin:8px 0 0;
       font-size:12px;
       color:rgba(15,23,42,.55);
       line-height:1.5;
     }
+
     .submit button{
       width:100%;
       border:none;
@@ -837,12 +298,12 @@
       font-size:14px;
     }
 
-    /* ===== Footer (like Closing Gifts) ===== */
+    /* ================= FOOTER ================= */
     .site-footer{
-      padding:18px 16px 26px;
       text-align:center;
-      color:rgba(15,23,42,.55);
+      padding:24px 16px 30px;
       font-size:12px;
+      color:rgba(15,23,42,.55);
     }
     .site-footer a{
       color:rgba(15,23,42,.55);
@@ -853,88 +314,94 @@
 </head>
 
 <body>
+
   <!-- HEADER -->
   <header class="site-header" role="banner">
     <div class="site-header__inner">
-      <div class="brand-left">
-        <img src="./assets/drh-logo.png" alt="D.R. Horton" />
-      </div>
-
-      <!-- Right side: Fusion4Branding (logo or fallback text) -->
-      <div class="brand-right">
-        <img src="./assets/fusion4branding.png" alt="Fusion4Branding"
-             onerror="this.style.display='none'; document.getElementById('f4bText').style.display='inline-flex';" />
-        <a id="f4bText" class="fallback" href="#" style="display:none;">Fusion4Branding</a>
-      </div>
+      <img src="./assets/drh-logo.png" alt="D.R. Horton">
+      <div class="site-header__right">Fusion4Branding</div>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" aria-label="DRH Lapel Pins 2026">
-      <div>
-        <h1 class="headline">
-          Looking for Lapel Pins for the 2026 Conference? Fusion 4 Branding is here to help!
-          Please fill out the form below and schedule a time with me to talk about your project.
-          We can fully customize any style of pin across multiple QTYs. Pricing will include the Lapel Pins,
-          Design Fees, and shipping all in one!
-        </h1>
-
-        <p class="sub">
-          Use the form to share your division, quantity, date needed, and theme ideas. Then schedule a quick call so we can align on options, pricing, and timeline.
-        </p>
-
-        <div class="cta-row">
-          <a class="btn primary" href="#request-form">Fill Out the Form</a>
-          <a class="btn" href="./schedule.html">Schedule a Time</a>
-        </div>
-      </div>
-
-      <!-- Golf-style banner -->
-      <div class="hero-banner" aria-label="Design inspiration banner">
-        <div class="badge"><span class="badge-dot" aria-hidden="true"></span> Custom Lapel Pins • 2026</div>
-
-        <!-- Replace these with your exported PNG/JPG thumbnails -->
-        <div class="circle c1"><img src="./assets/pins/pin-1.png" alt="Pin example 1" /></div>
-        <div class="circle c2"><img src="./assets/pins/pin-2.png" alt="Pin example 2" /></div>
-        <div class="circle c3"><img src="./assets/pins/pin-3.png" alt="Pin example 3" /></div>
-        <div class="circle c4"><img src="./assets/pins/pin-4.png" alt="Pin example 4" /></div>
-        <div class="circle c5"><img src="./assets/pins/pin-5.png" alt="Pin example 5" /></div>
+  <!-- HERO (Banner Image + Buttons) -->
+  <main class="hero">
+    <section class="hero-banner" aria-label="DRH Lapel Pins 2026 Hero Banner">
+      <div class="hero-actions">
+        <a class="hero-btn primary" href="#request-form">Fill Out the Form</a>
+        <a class="hero-btn secondary" href="./schedule.html">Schedule a Time</a>
       </div>
     </section>
+  </main>
 
-    <!-- Reference Pins (PDF links) -->
-    <section class="section" aria-label="Reference pin designs">
+  <!-- Reference Pins -->
+  <section class="section">
+    <div class="card">
       <h2 class="h2">Reference Pin Designs (PDF)</h2>
       <p class="p">Click any example below to view the reference artwork.</p>
 
-      <div class="gallery">
-        <a class="tile" href="./assets/drh-lapelpins/drh-nc-raleigh-pin-26.pdf" target="_blank" rel="noopener">
-          <strong>NC Raleigh Pin (’26)</strong><span>Open PDF</span>
+      <!-- ✅ Update these href paths to where your PDFs actually live -->
+      <div class="ref-grid">
+        <a class="ref-tile" href="./assets/drh-nc-raleigh-pin-26.pdf" target="_blank" rel="noopener">
+          <strong>NC Raleigh Pin (’26)</strong>
+          <span>Open PDF</span>
         </a>
-        <a class="tile" href="./assets/drh-lapelpins/drh-florida-pin.pdf" target="_blank" rel="noopener">
-          <strong>Florida Pin</strong><span>Open PDF</span>
+        <a class="ref-tile" href="./assets/drh-florida-pin.pdf" target="_blank" rel="noopener">
+          <strong>Florida Pin</strong>
+          <span>Open PDF</span>
         </a>
-        <a class="tile" href="./assets/drh-lapelpins/drh-georgia-atl-pin.pdf" target="_blank" rel="noopener">
-          <strong>Georgia / ATL Pin</strong><span>Open PDF</span>
+        <a class="ref-tile" href="./assets/drh-georgia-atl-pin.pdf" target="_blank" rel="noopener">
+          <strong>Georgia / ATL Pin</strong>
+          <span>Open PDF</span>
         </a>
-        <a class="tile" href="./assets/drh-lapelpins/drh-orlando-florida-pin.pdf" target="_blank" rel="noopener">
-          <strong>Orlando, FL Pin</strong><span>Open PDF</span>
+        <a class="ref-tile" href="./assets/drh-orlando-florida-pin.pdf" target="_blank" rel="noopener">
+          <strong>Orlando, FL Pin</strong>
+          <span>Open PDF</span>
         </a>
       </div>
 
-      <p class="help">
-        For the Golf-style circles, export the PDFs to PNG/JPG and save them as:
-        <code>./assets/pins/pin-1.png</code> … <code>pin-5.png</code>.
-      </p>
-    </section>
+      <div class="tip">
+        Tip: If you want a more visual look, you can convert PDFs into PNG thumbnails and swap these into image tiles.
+      </div>
+    </div>
+  </section>
 
-    <!-- Form -->
-    <section id="request-form" class="section" aria-label="Request form">
+  <!-- What happens next (3 tiles) -->
+  <section class="section">
+    <div class="card">
+      <h2 class="h2">What happens next</h2>
+
+      <div class="tiles3">
+        <div class="tile">
+          <div class="tile-title">Request a quote</div>
+          <p class="tile-text">
+            Submit your division, quantity, and date needed along with design inspiration.
+          </p>
+        </div>
+
+        <div class="tile">
+          <div class="tile-title">Review options</div>
+          <p class="tile-text">
+            We’ll confirm feasibility, decoration details, and lead times for your event.
+          </p>
+        </div>
+
+        <div class="tile">
+          <div class="tile-title">Talk to Hank</div>
+          <p class="tile-text">
+            Schedule a quick call to align on pricing, timeline, and production approach.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request Form -->
+  <section class="section" id="request-form">
+    <div class="card">
       <h2 class="h2">Request Lapel Pins</h2>
       <p class="p">Complete the form and we’ll follow up shortly.</p>
 
-      <!-- GitHub note: connect this to Formspree/Netlify/custom backend to email Hank -->
+      <!-- NOTE: GitHub pages is static. Add your form endpoint in action="" (Formspree or backend). -->
       <form class="form" method="post" action="" enctype="multipart/form-data">
         <div>
           <label for="name">Name</label>
@@ -984,21 +451,23 @@
 
         <div class="full submit">
           <button type="submit">Submit Request</button>
-          <p class="help">Form submissions should route to Hank’s inbox once you connect the form action endpoint.</p>
+          <p class="help">
+            (For GitHub Pages) Add your form endpoint in <code>action=""</code> so submissions go to Hank.
+          </p>
         </div>
       </form>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
     <div>
-      © <span id="year"></span> <a href="#">Fusion4Branding</a> • <a href="./index.html">Lapel Pins</a>
+      © <span id="year"></span> <a href="#">Fusion4Branding</a> • Lapel Pins
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     // Show upload only when "Yes"
     (function(){
@@ -1022,25 +491,6 @@
       }
     })();
   </script>
+
 </body>
 </html>
-{
-          wrap.style.display = 'block';
-        } else {
-          wrap.style.display = 'none';
-          if (file) file.value = '';
-        }
-      }
-
-      if (did) {
-        did.addEventListener('change', sync);
-        sync();
-      }
-    })();
-  </script>
-</body>
-</html>
-
-
-
-
