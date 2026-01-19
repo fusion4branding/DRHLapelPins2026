@@ -303,6 +303,17 @@
       text-decoration:none;
     }
     .site-footer a:hover{ text-decoration:underline; }
+
+    .gform-wrap{
+  border: 1px solid rgba(24,39,87,.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+.gform-wrap iframe{
+  display:block;
+}
+
   </style>
 </head>
 
@@ -410,114 +421,24 @@
     <h2 class="h2">Request Lapel Pins</h2>
     <p class="p">Complete the form and we’ll follow up shortly.</p>
 
-<form
-  class="form"
-  name="drh-lapel-pins"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  action="/thanks.html"
->
-  <!-- Required for Netlify to detect the form -->
-  <input type="hidden" name="form-name" value="drh-lapel-pins" />
-
-  <!-- Honeypot (spam trap) -->
-  <p hidden>
-    <label>Don’t fill this out: <input name="bot-field" /></label>
-  </p>
-
-  <div>
-    <label for="name">Name</label>
-    <input id="name" name="name" type="text" required />
-  </div>
-
-  <div>
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required />
-  </div>
-
-  <div>
-    <label for="division">Division</label>
-    <input id="division" name="division" type="text" required />
-  </div>
-
-  <div>
-    <label for="qty">QTY (Minimum 100)</label>
-    <input id="qty" name="qty" type="number" min="100" value="100" required />
-    <p class="help">Start at 100 and enter any higher quantity needed.</p>
-  </div>
-
-  <div class="full">
-    <label for="date_needed">Date needed by</label>
-    <input id="date_needed" name="date_needed" type="date" required />
-  </div>
-
-  <div class="full">
-    <label for="theme">
-      What images or themes do you want to incorporate into your design?
-      (State Bird, Local Mythology, Movie Inspiration, etc.)
-    </label>
-    <textarea id="theme" name="theme"></textarea>
-  </div>
-
-  <div class="full">
-    <label for="did_2024">Did your Location do a lapel pin in 2024?</label>
-    <select id="did_2024" name="did_2024" required>
-      <option value="" selected disabled>Select</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
-  </div>
-
-  <div id="uploadWrap" class="full" style="display:none;">
-    <label for="prev_pin_link">
-      If yes, please share a link to a photo of the previous pin (Optional)
-    </label>
-    <input
-      id="prev_pin_link"
-      name="prev_pin_link"
-      type="url"
-      placeholder="Google Drive / OneDrive link"
-    />
-    <p class="help">Paste a share link (view access).</p>
-  </div>
-
-  <div class="full submit">
-    <button type="submit">Submit Request</button>
-  </div>
-</form>
-
+    <div class="gform-wrap">
+      <iframe
+        src="P<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5sMSZ2SEUbwSLO8Ljdjpt3F13bNNm8Cd7KgzBngWyYCOamA/viewform?embedded=true" width="640" height="1494" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>"
+        width="100%"
+        height="1050"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="DRH Lapel Pins Request Form"
+      >Loading…</iframe>
+    </div>
   </div>
 </section>
-
-<script>
-  // Show upload link only when "Yes"
-  (function(){
-    var did = document.getElementById('did_2024');
-    var wrap = document.getElementById('uploadWrap');
-    var link = document.getElementById('prev_pin_link');
-
-    function sync(){
-      var v = did ? did.value : '';
-      if (v === 'Yes') {
-        wrap.style.display = 'block';
-      } else {
-        wrap.style.display = 'none';
-        if (link) link.value = '';
-      }
-    }
-
-    if (did) {
-      did.addEventListener('change', sync);
-      sync();
-    }
-  })();
-</script>
-
 
 
 </body>
 </html>
+
 
 
 
