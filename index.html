@@ -185,69 +185,57 @@
     }
 
     /* ================= Reference Tiles ================= */
-/* Featured pin */
-.pin-featured{
-  display:block;
-  width:100%;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid rgba(24,39,87,.15);
-  background:#fff;
-  margin-top: 10px;
-}
-
-.pin-featured img{
-  width:100%;
-  height: 340px;         /* featured height */
-  object-fit: contain;
-  display:block;
-  padding: 12px;
-}
-
-/* One-line thumbnail strip */
-.pin-strip{
+/* One-line scroll row */
+.pin-row{
   display:flex;
-  gap:12px;
-  margin-top:12px;
-  padding-bottom: 6px;   /* space for scrollbar */
+  gap:14px;
   overflow-x:auto;
   overflow-y:hidden;
+  padding: 14px 6px 10px;
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory; /* optional but nice */
 }
 
-/* Thumbnails */
-.pin-thumb{
+/* Base item (small) */
+.pin-item{
   flex: 0 0 auto;
-  width: 120px;
-  height: 82px;
-  border-radius:14px;
-  border:1px solid rgba(24,39,87,.15);
-  background:#fff;
-  padding: 8px;
-  cursor:pointer;
+  width: 140px;
+  height: 96px;
+  border-radius: 18px;
+  border: 1px solid rgba(24,39,87,.15);
+  background: #fff;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform .18s ease, width .18s ease, height .18s ease, border-color .18s ease, box-shadow .18s ease;
+  scroll-snap-align: center;
 }
 
-.pin-thumb img{
+.pin-item img{
   width:100%;
   height:100%;
   object-fit: contain;
   display:block;
 }
 
-.pin-thumb.is-active{
-  border:2px solid #182757;
+/* Active (big) — grows where it sits */
+.pin-item.is-active{
+  width: 320px;
+  height: 200px;
+  border: 2px solid #182757;
+  box-shadow: 0 18px 44px rgba(15,23,42,.16);
+  transform: translateY(-2px);
 }
 
-/* nicer focus for keyboard */
-.pin-thumb:focus{
+/* Focus (keyboard) */
+.pin-item:focus{
   outline: 3px solid rgba(24,39,87,.25);
   outline-offset: 2px;
 }
 
-/* mobile tweaks */
+/* Mobile tweak */
 @media (max-width: 640px){
-  .pin-featured img{ height: 260px; }
-  .pin-thumb{ width: 105px; height: 74px; }
+  .pin-item{ width: 120px; height: 86px; }
+  .pin-item.is-active{ width: 260px; height: 170px; }
 }
 
 
@@ -384,57 +372,52 @@
 <section class="section" id="reference-pins">
   <div class="card">
     <h2 class="h2">Reference Pin Designs</h2>
-    <p class="p">Click a design to preview it larger.</p>
+    <p class="p">Click a design to enlarge it.</p>
 
-    <!-- Featured -->
-    <a id="pinFeaturedLink" class="pin-featured" href="./assets/ref/ref-01.png" target="_blank" rel="noopener">
-      <img id="pinFeaturedImg" src="./assets/ref/ref-01.png" alt="Reference pin preview">
-    </a>
-
-    <!-- One-line thumbnails -->
-    <div class="pin-strip" id="pinStrip" aria-label="Reference pin thumbnails">
-      <button class="pin-thumb is-active" type="button" data-full="./assets/ref/ref-01.png" aria-label="Preview pin 1">
-        <img src="./assets/ref/ref-01.png" alt="Pin 1 thumbnail">
+    <div class="pin-row" id="pinRow" aria-label="Reference pin designs">
+      <button class="pin-item is-active" type="button" data-full="./assets/ref/ref-01.png" aria-label="Pin 1">
+        <img src="./assets/ref/ref-01.png" alt="Reference pin 1">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-02.png" aria-label="Preview pin 2">
-        <img src="./assets/ref/ref-02.png" alt="Pin 2 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-02.png" aria-label="Pin 2">
+        <img src="./assets/ref/ref-02.png" alt="Reference pin 2">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-03.png" aria-label="Preview pin 3">
-        <img src="./assets/ref/ref-03.png" alt="Pin 3 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-03.png" aria-label="Pin 3">
+        <img src="./assets/ref/ref-03.png" alt="Reference pin 3">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-04.png" aria-label="Preview pin 4">
-        <img src="./assets/ref/ref-04.png" alt="Pin 4 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-04.png" aria-label="Pin 4">
+        <img src="./assets/ref/ref-04.png" alt="Reference pin 4">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-05.png" aria-label="Preview pin 5">
-        <img src="./assets/ref/ref-05.png" alt="Pin 5 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-05.png" aria-label="Pin 5">
+        <img src="./assets/ref/ref-05.png" alt="Reference pin 5">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-06.png" aria-label="Preview pin 6">
-        <img src="./assets/ref/ref-06.png" alt="Pin 6 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-06.png" aria-label="Pin 6">
+        <img src="./assets/ref/ref-06.png" alt="Reference pin 6">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-07.png" aria-label="Preview pin 7">
-        <img src="./assets/ref/ref-07.png" alt="Pin 7 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-07.png" aria-label="Pin 7">
+        <img src="./assets/ref/ref-07.png" alt="Reference pin 7">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-08.png" aria-label="Preview pin 8">
-        <img src="./assets/ref/ref-08.png" alt="Pin 8 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-08.png" aria-label="Pin 8">
+        <img src="./assets/ref/ref-08.png" alt="Reference pin 8">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-09.png" aria-label="Preview pin 9">
-        <img src="./assets/ref/ref-09.png" alt="Pin 9 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-09.png" aria-label="Pin 9">
+        <img src="./assets/ref/ref-09.png" alt="Reference pin 9">
       </button>
 
-      <button class="pin-thumb" type="button" data-full="./assets/ref/ref-10.png" aria-label="Preview pin 10">
-        <img src="./assets/ref/ref-10.png" alt="Pin 10 thumbnail">
+      <button class="pin-item" type="button" data-full="./assets/ref/ref-10.png" aria-label="Pin 10">
+        <img src="./assets/ref/ref-10.png" alt="Reference pin 10">
       </button>
     </div>
   </div>
 </section>
+
 
 
   <!-- What happens next (3 tiles) -->
@@ -488,30 +471,19 @@
   </div>
 </section>
 
-
 <script>
-  (function () {
-    const featuredImg = document.getElementById("pinFeaturedImg");
-    const featuredLink = document.getElementById("pinFeaturedLink");
-    const strip = document.getElementById("pinStrip");
-    if (!featuredImg || !featuredLink || !strip) return;
+  (function(){
+    const row = document.getElementById("pinRow");
+    if (!row) return;
 
-    strip.addEventListener("click", (e) => {
-      const btn = e.target.closest(".pin-thumb");
+    row.addEventListener("click", (e) => {
+      const btn = e.target.closest(".pin-item");
       if (!btn) return;
 
-      const full = btn.getAttribute("data-full");
-      if (!full) return;
-
-      // swap featured
-      featuredImg.src = full;
-      featuredLink.href = full;
-
-      // active state
-      strip.querySelectorAll(".pin-thumb").forEach(b => b.classList.remove("is-active"));
+      row.querySelectorAll(".pin-item").forEach(x => x.classList.remove("is-active"));
       btn.classList.add("is-active");
 
-      // optional: keep selected thumb in view
+      // keep the selected one visible/centered
       btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     });
   })();
@@ -520,6 +492,7 @@
 
 </body>
 </html>
+
 
 
 
