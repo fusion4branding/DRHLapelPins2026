@@ -185,47 +185,46 @@
     }
 
     /* ================= Reference Tiles ================= */
-/* One-line scroll row */
 .pin-row{
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 14px 6px 14px; /* even padding */
-  align-items: center;   /* ✅ THIS CENTERS THE SMALL IMAGES */
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:14px 6px 10px;
+  align-items:center;            /* centers the small ones */
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
 }
 
-/* Base item (small) */
+/* small default */
 .pin-item{
-  flex: 0 0 auto;
-  width: 140px;
-  height: 96px;
-  border-radius: 18px;
-  border: 1px solid rgba(24,39,87,.15);
-  background: #fff;
-  padding: 10px;
-  cursor: pointer;
-  transition: transform .18s ease, width .18s ease, height .18s ease, border-color .18s ease, box-shadow .18s ease;
-  scroll-snap-align: center;
+  flex:0 0 auto;
+  width:140px;
+  height:96px;
+  border-radius:18px;
+  border:1px solid rgba(24,39,87,.15);
+  background:#fff;
+  padding:10px;
+  cursor:pointer;
+  transition: width .18s ease, height .18s ease, box-shadow .18s ease, border-color .18s ease;
+  scroll-snap-align:center;
 }
 
 .pin-item img{
   width:100%;
   height:100%;
-  object-fit: contain;
+  object-fit:contain;
   display:block;
 }
 
-/* Active (big) — grows where it sits */
-..pin-item.is-active{
-  width: 320px;
-  height: 200px;
-  border: 2px solid #182757;
-  box-shadow: 0 18px 44px rgba(15,23,42,.16);
-  transform: translateY(0); /* remove upward push */
+/* BIG active (this is the main one) */
+.pin-item.is-active{
+  width:360px;
+  height:210px;
+  border:2px solid #182757;
+  box-shadow:0 18px 44px rgba(15,23,42,.16);
 }
+
 
 
 /* Focus (keyboard) */
@@ -478,14 +477,21 @@
     const row = document.getElementById("pinRow");
     if (!row) return;
 
+    const items = Array.from(row.querySelectorAll(".pin-item"));
+    if (items.length === 0) return;
+
+    // Ensure one starts active
+    if (!row.querySelector(".pin-item.is-active")) {
+      items[0].classList.add("is-active");
+    }
+
     row.addEventListener("click", (e) => {
       const btn = e.target.closest(".pin-item");
       if (!btn) return;
 
-      row.querySelectorAll(".pin-item").forEach(x => x.classList.remove("is-active"));
+      items.forEach(x => x.classList.remove("is-active"));
       btn.classList.add("is-active");
 
-      // keep the selected one visible/centered
       btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     });
   })();
@@ -494,6 +500,7 @@
 
 </body>
 </html>
+
 
 
 
