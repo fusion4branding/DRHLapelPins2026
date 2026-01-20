@@ -187,13 +187,14 @@
     /* ================= Reference Tiles ================= */
 /* One-line scroll row */
 .pin-row{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  overflow-y:hidden;
-  padding: 14px 6px 10px;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 14px 6px 14px; /* even padding */
+  align-items: center;   /* ✅ THIS CENTERS THE SMALL IMAGES */
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory; /* optional but nice */
+  scroll-snap-type: x mandatory;
 }
 
 /* Base item (small) */
@@ -218,13 +219,14 @@
 }
 
 /* Active (big) — grows where it sits */
-.pin-item.is-active{
+..pin-item.is-active{
   width: 320px;
   height: 200px;
   border: 2px solid #182757;
   box-shadow: 0 18px 44px rgba(15,23,42,.16);
-  transform: translateY(-2px);
+  transform: translateY(0); /* remove upward push */
 }
+
 
 /* Focus (keyboard) */
 .pin-item:focus{
@@ -492,6 +494,7 @@
 
 </body>
 </html>
+
 
 
 
